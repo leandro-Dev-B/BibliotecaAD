@@ -1,0 +1,34 @@
+package org.example.bibliotecaad.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+import org.example.bibliotecaad.model.enums.NivelDeAcesso;
+
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "usuarios")
+public class Usuario {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idUsuario;
+
+    @Column(name = "nome")
+    private String nome;
+
+    @Column(name = "idade")
+    private int idade;
+
+    @Column(name = "senha")
+    private String senha;
+
+    @Column(name = "ativo")
+    private boolean ativo;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "nivel_de_acesso")
+    private NivelDeAcesso nivelDeAcesso;
+}
