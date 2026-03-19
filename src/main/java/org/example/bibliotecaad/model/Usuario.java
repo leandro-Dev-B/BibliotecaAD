@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.example.bibliotecaad.model.enums.NivelDeAcesso;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Builder
@@ -31,4 +33,16 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(name = "nivel_de_acesso")
     private NivelDeAcesso nivelDeAcesso;
+
+    @Column (name = "email")
+    private String email;
+
+    @Column (name = "telefone")
+    private String telefone;
+
+    @Column (name = "data_cadastro")
+    private LocalDate dataCadastro;
+
+    @Column (name = "data_nascimento")
+    private LocalDate dataDeNascimento;
 }
