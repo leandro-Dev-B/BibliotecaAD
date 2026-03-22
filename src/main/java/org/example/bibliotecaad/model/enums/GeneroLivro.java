@@ -9,12 +9,16 @@ public enum GeneroLivro {
     DEVOCIONAL("Devocional"),
     ESTUDO_BIBLICO("Estudo Bíblico"),
     VIDA_CRISTA("Vida Cristã"),
-    FAMILIA("Família e Relacionamentos"),
+    FAMILIA("Família"),
+    RELACIONAMENTO("Relacionamento"),
     LIDERANCA("Liderança Cristã"),
     PREGACAO("Pregação"),
-    HISTORIA_DA_IGREJA("História da Igreja"),
+    HISTORIA("História"),
     BIOGRAFIA("Biografia"),
-    INFANTIL("Infantil/Juvenil");
+    INFANTIL("Infantil"),
+    JUVENIL("Juvenil"),
+    FICCAO("Ficção"),
+    SAUDE_MENTAL("Saúde Mental");
 
     private String descricao;
 

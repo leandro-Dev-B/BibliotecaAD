@@ -16,4 +16,19 @@ public class UsuarioService {
     public List<Usuario> listarTodos() {
         return usuarioRepository.findAll();
     }
+
+    public Usuario atualizarUsuario(Usuario usuario) {
+        if (usuario.getIdUsuario() == null || !usuarioRepository.existsById(usuario.getIdUsuario())) {
+            throw new IllegalArgumentException("Usuário não encontrado para atualização");
+        }
+        return usuarioRepository.save(usuario);
+    }
+
+    public void deletarUsuario(Integer id) {
+        if (!usuarioRepository.existsById(id)) {
+            throw new IllegalArgumentException("Usuário não encontrado para exclusão");
+        }
+        usuarioRepository.deleteById(id);
+    }
+
 }

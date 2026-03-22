@@ -16,4 +16,17 @@ public class EmprestimoService {
     public List<Emprestimo> listarTodos() {
         return emprestimoRepository.findAll();
     }
+
+    public Emprestimo criarEmprestimo(Emprestimo emprestimo) {
+        return emprestimoRepository.save(emprestimo);
+    }
+
+    public Emprestimo atualizarEmprestimo(Emprestimo emprestimo) {
+        return emprestimoRepository.save(emprestimo);
+    }
+
+    public void deletarEmprestimo(Integer id) {
+        emprestimoRepository.deleteById(id);
+    }
+
 }

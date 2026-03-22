@@ -4,9 +4,7 @@ package org.example.bibliotecaad.controller;
 import org.example.bibliotecaad.model.Usuario;
 import org.example.bibliotecaad.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,4 +19,15 @@ public class UsuarioController {
     public List<Usuario> listarTodos() {
         return usuarioService.listarTodos();
     }
+
+    @PutMapping
+    public Usuario atualizarUsuario(Usuario usuario) {
+        return usuarioService.atualizarUsuario(usuario);
+    }
+
+    @DeleteMapping
+    public void deletarUsuario(Integer id) {
+        usuarioService.deletarUsuario(id);
+    }
+
 }
