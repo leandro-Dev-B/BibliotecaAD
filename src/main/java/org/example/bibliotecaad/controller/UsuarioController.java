@@ -20,6 +20,11 @@ public class UsuarioController {
         return usuarioService.listarTodos();
     }
 
+    @PostMapping
+    public Usuario criarUsuario(Usuario usuario) {
+        return usuarioService.criarUsuario(usuario);
+    }
+
     @PutMapping
     public Usuario atualizarUsuario(Usuario usuario) {
         return usuarioService.atualizarUsuario(usuario);

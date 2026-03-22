@@ -17,6 +17,10 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
+    public Usuario criarUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+
     public Usuario atualizarUsuario(Usuario usuario) {
         if (usuario.getIdUsuario() == null || !usuarioRepository.existsById(usuario.getIdUsuario())) {
             throw new IllegalArgumentException("Usuário não encontrado para atualização");
