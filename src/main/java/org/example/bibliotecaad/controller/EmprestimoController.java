@@ -1,7 +1,11 @@
 package org.example.bibliotecaad.controller;
 
-import org.example.bibliotecaad.model.Emprestimo;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.example.bibliotecaad.dto.EmprestimoDto;
+import org.example.bibliotecaad.entity.Emprestimo;
 import org.example.bibliotecaad.service.EmprestimoService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,14 +25,11 @@ public class EmprestimoController {
         return emprestimoService.listarTodos();
     }
 
-    @PostMapping
-    public Emprestimo criarEmprestimo(Emprestimo emprestimo) {
-        return emprestimoService.criarEmprestimo(emprestimo);
-    }
-
-    @PutMapping
-    public Emprestimo atualizarEmprestimo(Emprestimo emprestimo) {
-        return emprestimoService.atualizarEmprestimo(emprestimo);
+    @PostMapping("{idUsuario}/{idLivro}")
+    @Operation(summary = "Cria uma operação de empréstimo de livro para um usuário.")
+    @ApiResponse(responseCode = "201", description = "Empréstimo criado com sucesso.")
+    public ResponseEntity<EmprestimoDto> criarEmprestimo(@PathVariable ("idUsuario") Integer idUsuario, @PathVariable ("idLivro") Integer idLivro) {
+        return ResponseEntity.ok(emprestimoService.criarEmprestimo(idUsuario, idLivro));
     }
 
     @DeleteMapping

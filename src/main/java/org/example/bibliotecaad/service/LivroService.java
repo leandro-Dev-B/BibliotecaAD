@@ -1,6 +1,6 @@
 package org.example.bibliotecaad.service;
 
-import org.example.bibliotecaad.model.Livro;
+import org.example.bibliotecaad.entity.Livro;
 import org.example.bibliotecaad.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +42,11 @@ public class LivroService {
             throw new IllegalArgumentException("Livro não encontrado para exclusão.");
         }
         livroRepository.deleteById(id);
+    }
+
+    public String buscarLivroPorId(Integer id) {
+        return livroRepository.findById(id)
+                .map(Livro::getTitulo)
+                .orElseThrow(() -> new IllegalArgumentException("Livro não encontrado"));
     }
 }
