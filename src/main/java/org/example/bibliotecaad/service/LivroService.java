@@ -30,7 +30,6 @@ public class LivroService {
     }
 
     public Livro atualizarLivro(Livro livro) {
-
         if (!livroRepository.existsById(livro.getIdLivro())) {
             throw new IllegalArgumentException("Livro não encontrado para atualização.");
         }
@@ -48,5 +47,10 @@ public class LivroService {
         return livroRepository.findById(id)
                 .map(Livro::getTitulo)
                 .orElseThrow(() -> new IllegalArgumentException("Livro não encontrado"));
+    }
+    public void validarExistenciaLivro(Integer id) {
+        if (!livroRepository.existsById(id)) {
+            throw new IllegalArgumentException("Livro com ID " + id + " não existe");
+        }
     }
 }

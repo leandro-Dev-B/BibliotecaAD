@@ -23,21 +23,24 @@ public class EmprestimoService {
         this.usuarioService = usuarioService;
     }
 
-
     public List<Emprestimo> listarTodos() {
         return emprestimoRepository.findAll();
     }
 
     public EmprestimoDto criarEmprestimo(Integer idUsuario, Integer idLivro) {
-        Emprestimo salvo = emprestimoMapper.toEntity(idLivro,idUsuario);
-            emprestimoRepository.save(salvo);
-            String nomeUsuario = usuarioService.buscarUsuarioPorId(idUsuario);
-            String tituloLivro = livroService.buscarLivroPorId(idLivro);
+        usuarioService.validarExistenciaUsuario(idUsuario);
+        livroService.validarExistenciaLivro(idLivro);
+
+        Emprestimo emprestimo = emprestimoMapper.toEntity(idUsuario, idLivro);
+        Emprestimo salvo = emprestimoRepository.save(emprestimo);
+
+        String nomeUsuario = usuarioService.buscarUsuarioPorId(idUsuario);
+        String tituloLivro = livroService.buscarLivroPorId(idLivro);
+        
         return emprestimoMapper.emprestimoCriadoResposta(salvo, nomeUsuario, tituloLivro);
     }
 
     public void deletarEmprestimo(Integer id) {
         emprestimoRepository.deleteById(id);
     }
-
 }

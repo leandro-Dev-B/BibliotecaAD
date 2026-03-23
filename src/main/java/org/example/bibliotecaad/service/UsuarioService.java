@@ -48,4 +48,9 @@ public class UsuarioService {
                 .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
     }
 
+    public void validarExistenciaUsuario(Integer id) {
+        if (!usuarioRepository.existsById(id)) {
+            throw new IllegalArgumentException("Usuário com ID " + id + " não existe");
+        }
+    }
 }
