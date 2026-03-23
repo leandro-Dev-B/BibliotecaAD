@@ -1,6 +1,6 @@
 package org.example.bibliotecaad.controller;
 
-import org.example.bibliotecaad.model.Livro;
+import org.example.bibliotecaad.entity.Livro;
 import org.example.bibliotecaad.service.LivroService;
 import org.springframework.web.bind.annotation.*;
 

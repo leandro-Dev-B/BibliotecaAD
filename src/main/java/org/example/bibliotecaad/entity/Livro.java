@@ -1,9 +1,9 @@
-package org.example.bibliotecaad.model;
+package org.example.bibliotecaad.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.bibliotecaad.model.enums.GeneroLivro;
-import org.example.bibliotecaad.model.enums.SituacaoLivro;
+import org.example.bibliotecaad.entity.enums.GeneroLivro;
+import org.example.bibliotecaad.entity.enums.SituacaoLivro;
 
 @Getter
 @Setter

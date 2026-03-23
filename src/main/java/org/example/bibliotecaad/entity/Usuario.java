@@ -1,8 +1,8 @@
-package org.example.bibliotecaad.model;
+package org.example.bibliotecaad.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.bibliotecaad.model.enums.NivelDeAcesso;
+import org.example.bibliotecaad.entity.enums.NivelDeAcesso;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package org.example.bibliotecaad.model.enums;
+package org.example.bibliotecaad.entity.enums;
 
 import lombok.Getter;
 
