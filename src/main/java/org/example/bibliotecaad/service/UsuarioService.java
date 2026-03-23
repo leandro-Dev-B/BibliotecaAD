@@ -1,6 +1,6 @@
 package org.example.bibliotecaad.service;
 
-import org.example.bibliotecaad.model.Usuario;
+import org.example.bibliotecaad.entity.Usuario;
 import org.example.bibliotecaad.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +35,17 @@ public class UsuarioService {
             throw new IllegalArgumentException("Usuário não encontrado para exclusão");
         }
         usuarioRepository.deleteById(id);
+    }
+
+    public String buscarUsuarioPorId(Integer id) {
+        return usuarioRepository.findById(id)
+                .map(Usuario::getNome)
+                .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
+    }
+
+    public Usuario buscarTudoDoUsuarioPorId(Integer id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
     }
 
 }

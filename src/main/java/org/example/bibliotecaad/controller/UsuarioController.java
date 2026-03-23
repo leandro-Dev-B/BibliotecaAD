@@ -1,7 +1,7 @@
 package org.example.bibliotecaad.controller;
 
 
-import org.example.bibliotecaad.model.Usuario;
+import org.example.bibliotecaad.entity.Usuario;
 import org.example.bibliotecaad.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +20,11 @@ public class UsuarioController {
     @GetMapping
     public List<Usuario> listarTodos() {
         return usuarioService.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Usuario buscarUsuarioPorId(@PathVariable Integer id) {
+        return usuarioService.buscarTudoDoUsuarioPorId(id);
     }
 
     @PostMapping
