@@ -2,7 +2,6 @@ package org.example.bibliotecaad.controller;
 
 import org.example.bibliotecaad.model.Livro;
 import org.example.bibliotecaad.service.LivroService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @RequestMapping("/livro")
 public class LivroController {
 
-    @Autowired
-    private LivroService livroService;
+    private final LivroService livroService;
+
+    public LivroController(LivroService livroService) {
+        this.livroService = livroService;
+    }
 
     @GetMapping
     public List<Livro> listarTodos() {

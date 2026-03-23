@@ -2,7 +2,6 @@ package org.example.bibliotecaad.controller;
 
 import org.example.bibliotecaad.model.Emprestimo;
 import org.example.bibliotecaad.service.EmprestimoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @RequestMapping("/emprestimo")
 public class EmprestimoController {
 
-    @Autowired
-    private EmprestimoService emprestimoService;
+    private final EmprestimoService emprestimoService;
+
+    public EmprestimoController(EmprestimoService emprestimoService) {
+        this.emprestimoService = emprestimoService;
+    }
 
     @GetMapping
     public List<Emprestimo> listarTodos() {
