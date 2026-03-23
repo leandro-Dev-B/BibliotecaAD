@@ -5,6 +5,7 @@ import org.example.bibliotecaad.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
@@ -37,15 +38,8 @@ public class UsuarioService {
         usuarioRepository.deleteById(id);
     }
 
-    public String buscarUsuarioPorId(Integer id) {
-        return usuarioRepository.findById(id)
-                .map(Usuario::getNome)
-                .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
-    }
-
-    public Usuario buscarTudoDoUsuarioPorId(Integer id) {
-        return usuarioRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
+    public Optional<Usuario> buscarUsuarioPorId(Integer id) {
+        return usuarioRepository.findById(id);
     }
 
     public void validarExistenciaUsuario(Integer id) {

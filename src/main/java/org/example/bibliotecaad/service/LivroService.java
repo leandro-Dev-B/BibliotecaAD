@@ -5,6 +5,7 @@ import org.example.bibliotecaad.repository.LivroRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LivroService {
@@ -43,11 +44,10 @@ public class LivroService {
         livroRepository.deleteById(id);
     }
 
-    public String buscarLivroPorId(Integer id) {
-        return livroRepository.findById(id)
-                .map(Livro::getTitulo)
-                .orElseThrow(() -> new IllegalArgumentException("Livro não encontrado"));
+    public Optional<Livro> buscarLivroPorId(Integer id) {
+        return livroRepository.findById(id);
     }
+
     public void validarExistenciaLivro(Integer id) {
         if (!livroRepository.existsById(id)) {
             throw new IllegalArgumentException("Livro com ID " + id + " não existe");

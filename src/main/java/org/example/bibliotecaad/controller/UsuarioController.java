@@ -6,6 +6,7 @@ import org.example.bibliotecaad.service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuario")
@@ -23,8 +24,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public Usuario buscarUsuarioPorId(@PathVariable Integer id) {
-        return usuarioService.buscarTudoDoUsuarioPorId(id);
+    public Optional<Usuario> buscarUsuarioPorId(@PathVariable Integer id) {
+        return usuarioService.buscarUsuarioPorId(id);
     }
 
     @PostMapping

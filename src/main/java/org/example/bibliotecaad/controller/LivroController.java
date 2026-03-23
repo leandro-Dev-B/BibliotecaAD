@@ -5,6 +5,7 @@ import org.example.bibliotecaad.service.LivroService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/livro")
@@ -19,6 +20,11 @@ public class LivroController {
     @GetMapping
     public List<Livro> listarTodos() {
         return livroService.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Livro> buscarLivroPorId(@PathVariable Integer id) {
+        return livroService.buscarLivroPorId(id);
     }
 
     @PostMapping

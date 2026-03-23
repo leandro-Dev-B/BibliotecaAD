@@ -25,6 +25,11 @@ public class EmprestimoController {
         return emprestimoService.listarTodos();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Emprestimo> buscarEmprestimoPorId(@PathVariable Integer id) {
+        return ResponseEntity.ok(emprestimoService.buscarEmprestimoPorId(id).orElseThrow(() -> new IllegalArgumentException("Empréstimo com ID " + id + " não encontrado")));
+    }
+
     @PostMapping("{idUsuario}/{idLivro}")
     @Operation(summary = "Cria uma operação de empréstimo de livro para um usuário.")
     @ApiResponse(responseCode = "201", description = "Empréstimo criado com sucesso.")

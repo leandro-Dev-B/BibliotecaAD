@@ -2,11 +2,14 @@ package org.example.bibliotecaad.service;
 
 import org.example.bibliotecaad.dto.EmprestimoDto;
 import org.example.bibliotecaad.entity.Emprestimo;
+import org.example.bibliotecaad.entity.Livro;
+import org.example.bibliotecaad.entity.Usuario;
 import org.example.bibliotecaad.mapping.EmprestimoMapper;
 import org.example.bibliotecaad.repository.EmprestimoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmprestimoService {
@@ -32,15 +35,19 @@ public class EmprestimoService {
         livroService.validarExistenciaLivro(idLivro);
 
         Emprestimo emprestimo = emprestimoMapper.toEntity(idUsuario, idLivro);
-        Emprestimo salvo = emprestimoRepository.save(emprestimo);
+        Emprestimo entity = emprestimoRepository.save(emprestimo);
 
-        String nomeUsuario = usuarioService.buscarUsuarioPorId(idUsuario);
-        String tituloLivro = livroService.buscarLivroPorId(idLivro);
+        Optional<Usuario> nomeUsuario = usuarioService.buscarUsuarioPorId(idUsuario);
+        Optional<Livro> tituloLivro = livroService.buscarLivroPorId(idLivro);
         
-        return emprestimoMapper.emprestimoCriadoResposta(salvo, nomeUsuario, tituloLivro);
+        return emprestimoMapper.emprestimoCriadoResposta(entity, nomeUsuario, tituloLivro);
     }
 
     public void deletarEmprestimo(Integer id) {
         emprestimoRepository.deleteById(id);
+    }
+
+    public Optional<Emprestimo> buscarEmprestimoPorId(Integer id) {
+        return emprestimoRepository.findById(id);
     }
 }
