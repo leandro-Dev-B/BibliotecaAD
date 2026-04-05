@@ -27,8 +27,8 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
-    @Column(name = "ativo")
-    private boolean ativo;
+    @Column(name = "emp_ativo")
+    private boolean empAtivo;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "nivel_de_acesso")

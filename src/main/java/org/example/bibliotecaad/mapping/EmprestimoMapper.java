@@ -32,4 +32,14 @@ public class EmprestimoMapper {
                 .dataDevolucaoPrevista(entity.getDataDevolucaoPrevista())
                 .build();
     }
+
+    public EmprestimoDto emprestimoDevolvidoResposta(Emprestimo entity, Optional<Usuario> nomeUsuario, Optional<Livro> tituloLivro) {
+        return EmprestimoDto.builder()
+                .idEmprestimo(entity.getIdEmprestimo())
+                .nomeUsuario(nomeUsuario.map(Usuario::getNome).orElse("Usuário Desconecido"))
+                .tituloLivro(tituloLivro.map(Livro::getTitulo).orElse("Livro Desconecido"))
+                .dataEmprestimo(entity.getDataEmprestimo())
+                .dataDevolucaoReal(LocalDate.now())
+                .build();
+    }
 }

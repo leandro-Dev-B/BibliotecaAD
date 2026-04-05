@@ -37,6 +37,13 @@ public class EmprestimoController {
         return ResponseEntity.ok(emprestimoService.criarEmprestimo(idUsuario, idLivro));
     }
 
+    @PostMapping("{idEmprestimo}/devolucao")
+    @Operation (summary = "Registra a devolução de um livro emprestado.")
+    @ApiResponse(responseCode = "200", description = "Devolução registrada com sucesso.")
+    public ResponseEntity<EmprestimoDto> registrarDevolucao(@PathVariable Integer idEmprestimo) {
+        return ResponseEntity.ok(emprestimoService.devolucaoDeEmprestimo(idEmprestimo));
+    }
+
     @DeleteMapping
     public void deletarEmprestimo(Integer id) {
         emprestimoService.deletarEmprestimo(id);

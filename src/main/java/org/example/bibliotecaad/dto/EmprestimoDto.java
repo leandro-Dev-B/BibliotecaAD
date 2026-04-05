@@ -15,4 +15,5 @@ public class EmprestimoDto {
     private String tituloLivro;
     private LocalDate dataDevolucaoPrevista;
     private LocalDate dataEmprestimo;
+    private LocalDate dataDevolucaoReal;
 }
