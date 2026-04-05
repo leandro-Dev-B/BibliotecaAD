@@ -55,10 +55,12 @@ public class EmprestimoController {
         emprestimoService.verificarEmprestimosAtrasados();
     }
 
-    @PostMapping("/renovacao")
+    @PostMapping("/verificar-atrasados")
+    @Operation (summary = "Verifica manualmente os empréstimos atrasados e atualiza seus status.")
+    @ApiResponse(responseCode = "200", description = "Status dos empréstimos atualizado com base na data de devolução prevista.")
     public String verificarEmprestimosAtrasadosManual(){
         emprestimoService.verificarEmprestimosAtrasados();
-        return "Status dos empréstimos atualizado com base na data de devolução prevista.";
+        return "Verificação manual de empréstimos atrasados concluída. Status atualizado conforme necessário.";
     }
 
 }

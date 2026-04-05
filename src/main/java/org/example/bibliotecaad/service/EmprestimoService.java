@@ -8,6 +8,7 @@ import org.example.bibliotecaad.entity.enums.SituacaoLivro;
 import org.example.bibliotecaad.entity.enums.StatusEmprestimo;
 import org.example.bibliotecaad.mapping.EmprestimoMapper;
 import org.example.bibliotecaad.repository.EmprestimoRepository;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -121,6 +122,7 @@ public class EmprestimoService {
         return emprestimoRepository.save(emprestimo);
     }
 
+    @Scheduled(cron = "0 0 0 * * ?") // Executa diariamente à meia-noite
     public void verificarEmprestimosAtrasados() {
         List<Emprestimo> emprestimosAtivos = emprestimoRepository.findByStatusEmprestimo(StatusEmprestimo.ATIVO);
         java.time.LocalDate hoje = java.time.LocalDate.now();
