@@ -121,4 +121,16 @@ public class EmprestimoService {
         return emprestimoRepository.save(emprestimo);
     }
 
+    public void verificarEmprestimosAtrasados() {
+        List<Emprestimo> emprestimosAtivos = emprestimoRepository.findByStatusEmprestimo(StatusEmprestimo.ATIVO);
+        java.time.LocalDate hoje = java.time.LocalDate.now();
+
+        for (Emprestimo emprestimo : emprestimosAtivos) {
+            if (emprestimo.getDataDevolucaoPrevista().isBefore(hoje)) {
+                emprestimo.setStatusEmprestimo(StatusEmprestimo.ATRASADO);
+                emprestimoRepository.save(emprestimo);
+            }
+        }
+    }
+
 }

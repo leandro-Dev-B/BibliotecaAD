@@ -6,6 +6,7 @@ import org.example.bibliotecaad.dto.EmprestimoDto;
 import org.example.bibliotecaad.entity.Emprestimo;
 import org.example.bibliotecaad.service.EmprestimoService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,6 +48,17 @@ public class EmprestimoController {
     @DeleteMapping
     public void deletarEmprestimo(Integer id) {
         emprestimoService.deletarEmprestimo(id);
+    }
+
+    @Scheduled(cron = "0 0 0 * * ?") // Executa diariamente à meia-noite
+    public void verificarEmprestimosAtrasados() {
+        emprestimoService.verificarEmprestimosAtrasados();
+    }
+
+    @PostMapping("/renovacao")
+    public String verificarEmprestimosAtrasadosManual(){
+        emprestimoService.verificarEmprestimosAtrasados();
+        return "Status dos empréstimos atualizado com base na data de devolução prevista.";
     }
 
 }
