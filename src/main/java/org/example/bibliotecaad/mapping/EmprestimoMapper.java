@@ -39,6 +39,7 @@ public class EmprestimoMapper {
                 .nomeUsuario(nomeUsuario.map(Usuario::getNome).orElse("Usuário Desconecido"))
                 .tituloLivro(tituloLivro.map(Livro::getTitulo).orElse("Livro Desconecido"))
                 .dataEmprestimo(entity.getDataEmprestimo())
+                .dataDevolucaoPrevista(entity.getDataDevolucaoPrevista())
                 .dataDevolucaoReal(LocalDate.now())
                 .build();
     }
